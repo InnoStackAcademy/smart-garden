@@ -1,6 +1,7 @@
 const mqtt = require('mqtt');
 const SensorReading = require('../models/SensorReading');
 const DeviceCommand = require('../models/DeviceCommand');
+const { SOCKET_EVENTS, MQTT_TOPICS } = require('../../../shared/constants');
 
 let client = null;
 let io = null;
@@ -24,16 +25,16 @@ function initMqtt(socketServer) {
   client.on('connect', () => {
     console.log(`[MQTT] Conectado al broker → ${brokerUrl}`);
 
-    // Suscripción a telemetría de todos los devices
-    client.subscribe('jardin/+/sensores', { qos: 0 }, (err) => {
+    // Suscripción a telemetría
+    client.subscribe(MQTT_TOPICS.SENSORS, { qos: 0 }, (err) => {
       if (err) console.error('[MQTT] Error suscribiendo a sensores:', err.message);
-      else console.log('[MQTT] Suscrito a jardin/+/sensores');
+      else console.log(`[MQTT] Suscrito a ${MQTT_TOPICS.SENSORS}`);
     });
 
-    // Suscripción a confirmaciones de comandos
-    client.subscribe('jardin/+/status', { qos: 0 }, (err) => {
+    // Suscripción a status
+    client.subscribe(MQTT_TOPICS.STATUS, { qos: 0 }, (err) => {
       if (err) console.error('[MQTT] Error suscribiendo a status:', err.message);
-      else console.log('[MQTT] Suscrito a jardin/+/status');
+      else console.log(`[MQTT] Suscrito a ${MQTT_TOPICS.STATUS}`);
     });
   });
 
@@ -41,7 +42,6 @@ function initMqtt(socketServer) {
     try {
       const payload = JSON.parse(message.toString());
       const segments = topic.split('/');
-      // topic format: jardin/{device_id}/{channel}
       const deviceId = segments[1];
       const channel = segments[2];
 
@@ -54,7 +54,6 @@ function initMqtt(socketServer) {
       console.error(`[MQTT] Error procesando mensaje de ${topic}:`, err.message);
     }
   });
-
   client.on('error', (err) => {
     console.error('[MQTT] Error de conexión:', err.message);
   });
@@ -79,12 +78,10 @@ async function handleSensorData(deviceId, payload) {
   });
 
   await reading.save();
+  console.log(`[MQTT] Telemetría guardada → ${deviceId}`);
 
-  console.log(`[MQTT] Telemetría guardada → ${deviceId} @ ${reading.timestamp.toISOString()}`);
-
-  // Emitir al frontend en tiempo real
   if (io) {
-    io.emit('sensor:update', {
+    io.emit(SOCKET_EVENTS.SENSOR_UPDATE, {
       device_id: deviceId,
       timestamp: reading.timestamp,
       sensors: reading.sensors
@@ -104,19 +101,13 @@ async function handleCommandStatus(deviceId, payload) {
     { sort: { created_at: -1 }, new: true }
   );
 
-  if (command) {
-    console.log(`[MQTT] Comando confirmado → ${deviceId}/${action}`);
-
-    if (io) {
-      io.emit('command:confirmed', {
-        device_id: deviceId,
-        action: command.action,
-        status: command.status,
-        confirmed_at: command.confirmed_at
-      });
-    }
-  } else {
-    console.warn(`[MQTT] Confirmación huérfana → ${deviceId}/${action} (no hay comando 'sent' pendiente)`);
+  if (command && io) {
+    io.emit(SOCKET_EVENTS.COMMAND_CONFIRMED, {
+      device_id: deviceId,
+      action: command.action,
+      status: command.status,
+      confirmed_at: command.confirmed_at
+    });
   }
 }
 
@@ -124,17 +115,12 @@ async function handleCommandStatus(deviceId, payload) {
  * Publica un comando al topic MQTT del device
  */
 function publishCommand(deviceId, action, value) {
-  if (!client || !client.connected) {
-    throw new Error('Cliente MQTT no conectado');
-  }
+  if (!client || !client.connected) throw new Error('MQTT no conectado');
 
   const topic = `jardin/${deviceId}/comandos`;
   const payload = JSON.stringify({ action, value });
 
-  client.publish(topic, payload, { qos: 0 }, (err) => {
-    if (err) console.error(`[MQTT] Error publicando comando a ${topic}:`, err.message);
-    else console.log(`[MQTT] Comando publicado → ${topic}: ${payload}`);
-  });
+  client.publish(topic, payload, { qos: 0 });
 }
 
 module.exports = { initMqtt, publishCommand };
