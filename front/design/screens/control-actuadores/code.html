@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BioSync | Actuadores de Jardín</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#002114",
+                "surface-container": "#eceef0",
+                "primary-fixed-dim": "#68dba9",
+                "surface-variant": "#e0e3e5",
+                "background": "#f7f9fb",
+                "on-tertiary-fixed": "#2d1601",
+                "surface-container-highest": "#e0e3e5",
+                "secondary-fixed-dim": "#c4c9b1",
+                "on-surface": "#191c1e",
+                "on-surface-variant": "#3d4a42",
+                "on-tertiary-fixed-variant": "#5f4025",
+                "tertiary-fixed-dim": "#eabe9a",
+                "tertiary": "#765538",
+                "on-error-container": "#93000a",
+                "surface-container-low": "#f2f4f6",
+                "surface-bright": "#f7f9fb",
+                "outline-variant": "#bccac0",
+                "on-primary": "#ffffff",
+                "on-background": "#191c1e",
+                "outline": "#6d7a72",
+                "primary": "#006948",
+                "on-primary-container": "#f5fff7",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed": "#e0e5cc",
+                "tertiary-container": "#916d4e",
+                "on-tertiary-container": "#fffbff",
+                "error": "#ba1a1a",
+                "inverse-surface": "#2d3133",
+                "inverse-primary": "#68dba9",
+                "on-secondary-fixed": "#191d0e",
+                "on-secondary-container": "#626753",
+                "error-container": "#ffdad6",
+                "surface-dim": "#d8dadc",
+                "primary-container": "#00855d",
+                "inverse-on-surface": "#eff1f3",
+                "surface": "#f7f9fb",
+                "secondary": "#5c614d",
+                "on-primary-fixed-variant": "#005137",
+                "on-secondary-fixed-variant": "#444937",
+                "on-error": "#ffffff",
+                "secondary-container": "#e0e5cc",
+                "on-secondary": "#ffffff",
+                "surface-tint": "#006c4a",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-high": "#e6e8ea",
+                "primary-fixed": "#85f8c4",
+                "tertiary-fixed": "#ffdcc1"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            box-shadow: 0 0 12px rgba(0, 105, 72, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-72 flex flex-col fixed left-0 top-0 bg-[#eceef0] dark:bg-slate-900 shadow-[0_0_40px_0_rgba(25,28,30,0.06)] z-50">
+<div class="flex flex-col gap-4 p-6 h-full">
+<div class="mb-8">
+<h1 class="font-['Manrope'] font-extrabold text-2xl text-[#006948] dark:text-[#00855d]">BioSync</h1>
+<p class="font-['Manrope'] uppercase tracking-widest text-[10px] font-bold text-[#5c614d]">Digital Greenhouse</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 rounded-xl" href="../dashboard/code.html">
+<span class="material-symbols-outlined" data-icon="potted_plant">potted_plant</span>
+<span class="font-['Inter'] font-medium">Garden Stats</span>
+</a>
+<a class="bg-[#f7f9fb] dark:bg-slate-800 text-[#006948] dark:text-[#00855d] font-bold rounded-xl px-4 py-3 flex items-center gap-3" href="../control-actuadores/code.html">
+<span class="material-symbols-outlined" data-icon="tune" style="font-variation-settings: 'FILL' 1;">tune</span>
+<span class="font-['Inter']">Manual Control</span>
+</a>
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 rounded-xl" href="../historico-datos/code.html">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-['Inter'] font-medium">Growth Trends</span>
+</a>
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 rounded-xl" href="../alertas/code.html">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-['Inter'] font-medium">System Alerts</span>
+</a>
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 rounded-xl" href="../configuracion-sistema/code.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] font-medium">System Config</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/20">
+<button class="w-full bg-[#006948] hover:bg-[#00855d] text-white font-['Manrope'] font-bold py-3 px-4 rounded-xl transition-transform active:scale-95">
+                    Sync Devices
+                </button>
+<div class="mt-6 flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Primary User Profile" data-alt="Portrait of a professional greenhouse manager in natural daylight with greenery in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbtqGvfDVzWQc1xa1tkjgK0a8AyF1Dmk4kp4GvYTq3OXPUeiv9ByzXyibwTu7QcZYO2NT-UXYeI_Uz9V72sdVtl-9zATDpByyB1xtxfYNTIw4yOxljeB51cPjhSOI1MEIxIzEN39zlvQa4Wcq31T1Y7aYubVONgL0RISGyjK5Q0E8BhfX0ElzOg-ZGII2hEU2w7F76XSjAtlcF19AA7Sqn9nThxezSwdH3fxDi5Z84IIEYu2Az4_5xAAC2bUfqKuuqwB5hPTAxJ-8"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-on-surface truncate">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant truncate">Master Gardener</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-40 bg-[#f7f9fb]/80 dark:bg-slate-950/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-12 py-6">
+<div class="flex flex-col">
+<h2 class="font-headline font-black text-xl text-[#006948] dark:text-[#00855d]">Manual Control</h2>
+<span class="text-xs font-label uppercase tracking-widest text-outline">Actuator Management</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary text-sm w-64" placeholder="Search devices..." type="text"/>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#5c614d] hover:text-[#006948] cursor-pointer" data-icon="notifications_active">notifications_active</span>
+<span class="material-symbols-outlined text-[#5c614d] hover:text-[#006948] cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Content -->
+<div class="px-12 py-8">
+<!-- Hero Stats Bento -->
+<div class="grid grid-cols-12 gap-6 mb-12">
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-[0_0_40px_0_rgba(25,28,30,0.06)] flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="text-xs font-bold uppercase tracking-widest text-tertiary mb-2 block">System Pulse</span>
+<h3 class="text-4xl font-headline font-extrabold text-on-surface mb-4">Healthy &amp; Responsive</h3>
+<p class="text-on-surface-variant max-w-md leading-relaxed">All actuators are currently connected via Zigbee Mesh. Manual overrides will bypass scheduled automation cycles until manually toggled back.</p>
+</div>
+<div class="mt-8 flex gap-8 relative z-10">
+<div>
+<p class="text-[10px] uppercase font-black text-outline mb-1">Latency</p>
+<p class="font-headline text-2xl font-bold text-primary">14ms</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-black text-outline mb-1">Active Power</p>
+<p class="font-headline text-2xl font-bold text-primary">124W</p>
+</div>
+</div>
+<!-- Decorative Graphic -->
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-10">
+<img class="h-full w-full object-cover" data-alt="Abstract macro shot of plant cells under microscope with emerald green lighting and organic patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyq5ki9RaNi4w5iIAaRhk9rTija5S6i63hw5-Znq1HhOPDzjA2GqW_TdW8vflN4_f1wGTriGVAYDffneDm5Hl-T2Ht9toofAhnH70jdEwmsQ4i5JM_dc48C-QylSwtcQeego-Y4Q-msVnhgKTJ3M2ty24LBBPBr-3ZGhNHf08kHPTw7953Wy7MfeToydUfavlnRngfjza54OYqUkx4Si4IBe7ymUgaYoAD0kOG1m0lxKoOj_Nmwp34SCTVYn1lpDy42A08K3O5ZTw"/>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-primary rounded-xl p-8 text-on-primary flex flex-col justify-center items-center text-center relative overflow-hidden">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-5xl mb-4" data-icon="nest_eco_leaf" style="font-variation-settings: 'FILL' 1;">nest_eco_leaf</span>
+<h4 class="text-lg font-headline font-bold">Eco-Mode Active</h4>
+<p class="text-xs opacity-80 mt-2">Energy consumption optimized for current solar output.</p>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-50"></div>
+</div>
+</div>
+<!-- Control Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Water System Card -->
+<div class="bg-surface-container-low p-1 rounded-xl group hover:bg-surface-bright transition-colors duration-300">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm h-full flex flex-col">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<h5 class="text-xl font-headline font-bold mb-1">Irrigation System</h5>
+<p class="text-sm text-on-surface-variant mb-6">Zone 1-4 Drip Line</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-[10px] font-black text-outline uppercase">Flow Rate</span>
+<span class="text-sm font-bold">2.4 L/min</span>
+</div>
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase active-pill">Active</span>
+</div>
+</div>
+</div>
+<!-- Growth Lights Card -->
+<div class="bg-surface-container-low p-1 rounded-xl group hover:bg-surface-bright transition-colors duration-300">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm h-full flex flex-col">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-3xl" data-icon="light_mode" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<h5 class="text-xl font-headline font-bold mb-1">Growth Lights</h5>
+<p class="text-sm text-on-surface-variant mb-6">Full Spectrum LED Array</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-[10px] font-black text-outline uppercase">Intensity</span>
+<span class="text-sm font-bold">0% (Standby)</span>
+</div>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[10px] font-bold rounded-full uppercase">Off</span>
+</div>
+</div>
+</div>
+<!-- Fan System Card -->
+<div class="bg-surface-container-low p-1 rounded-xl group hover:bg-surface-bright transition-colors duration-300">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm h-full flex flex-col">
+<div class="flex justify-between items-start mb-8">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="air" style="font-variation-settings: 'FILL' 1;">air</span>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-secondary-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<h5 class="text-xl font-headline font-bold mb-1">Air Circulation</h5>
+<p class="text-sm text-on-surface-variant mb-6">Internal Ventilation Fans</p>
+<div class="mt-auto pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-[10px] font-black text-outline uppercase">Speed</span>
+<span class="text-sm font-bold">Low (800 RPM)</span>
+</div>
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase active-pill">Active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Details -->
+<div class="mt-12 bg-surface-container-low rounded-xl p-6 flex flex-wrap items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-3 h-3 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(0,105,72,0.6)]"></div>
+<span class="text-xs font-label text-on-surface-variant">Real-time Cloud Sync Active (Last sync: 2s ago)</span>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary hover:bg-primary/5 rounded-lg transition-colors">Reset Manual Overrides</button>
+<button class="px-4 py-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors">View logs</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#002114",
+                    "surface-container": "#eceef0",
+                    "primary-fixed-dim": "#68dba9",
+                    "surface-variant": "#e0e3e5",
+                    "background": "#f7f9fb",
+                    "on-tertiary-fixed": "#2d1601",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed-dim": "#c4c9b1",
+                    "on-surface": "#191c1e",
+                    "on-surface-variant": "#3d4a42",
+                    "on-tertiary-fixed-variant": "#5f4025",
+                    "tertiary-fixed-dim": "#eabe9a",
+                    "tertiary": "#765538",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-bright": "#f7f9fb",
+                    "outline-variant": "#bccac0",
+                    "on-primary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "outline": "#6d7a72",
+                    "primary": "#006948",
+                    "on-primary-container": "#f5fff7",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#e0e5cc",
+                    "tertiary-container": "#916d4e",
+                    "on-tertiary-container": "#fffbff",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#68dba9",
+                    "on-secondary-fixed": "#191d0e",
+                    "on-secondary-container": "#626753",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d8dadc",
+                    "primary-container": "#00855d",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface": "#f7f9fb",
+                    "secondary": "#5c614d",
+                    "on-primary-fixed-variant": "#005137",
+                    "on-secondary-fixed-variant": "#444937",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#e0e5cc",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#006c4a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "primary-fixed": "#85f8c4",
+                    "tertiary-fixed": "#ffdcc1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-72 flex flex-col fixed left-0 top-0 bg-[#eceef0] dark:bg-slate-900 shadow-[0_0_40px_0_rgba(25,28,30,0.06)] z-50">
+<div class="flex flex-col gap-4 p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">potted_plant</span>
+</div>
+<div>
+<h1 class="font-['Manrope'] font-extrabold text-2xl text-[#006948] dark:text-[#00855d]">BioSync</h1>
+<p class="font-['Manrope'] uppercase tracking-widest text-[10px] font-bold text-[#5c614d]">Digital Greenhouse</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 group rounded-xl" href="../dashboard/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">potted_plant</span>
+<span class="font-medium">Garden Stats</span>
+</a>
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 group rounded-xl" href="../control-actuadores/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">tune</span>
+<span class="font-medium">Manual Control</span>
+</a>
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 group rounded-xl" href="../historico-datos/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">monitoring</span>
+<span class="font-medium">Growth Trends</span>
+</a>
+<a class="text-[#5c614d] dark:text-slate-400 hover:text-[#006948] px-4 py-3 hover:bg-[#f7f9fb] dark:hover:bg-slate-800 transition-all duration-300 ease-in-out flex items-center gap-3 group rounded-xl" href="../alertas/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">notifications_active</span>
+<span class="font-medium">System Alerts</span>
+</a>
+<a class="bg-[#f7f9fb] dark:bg-slate-800 text-[#006948] dark:text-[#00855d] font-bold rounded-xl px-4 py-3 flex items-center gap-3" href="../configuracion-sistema/code.html">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-bold">System Config</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">sync</span>
+                Sync Devices
+            </button>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-40 bg-[#f7f9fb]/80 dark:bg-slate-950/80 backdrop-blur-md ml-0 md:ml-0">
+<div class="flex justify-between items-center px-12 py-6 ml-72">
+<h2 class="font-['Manrope'] font-semibold tracking-tight text-lg text-[#006948] dark:text-[#00855d]">System Configuration</h2>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Search parameters..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-secondary">
+<span class="material-symbols-outlined">notifications_active</span>
+</button>
+<button class="flex items-center gap-2 p-1 pr-3 rounded-full hover:bg-surface-container transition-colors">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Close-up professional headshot of a botanical scientist in a clean laboratory setting with soft focus greenhouse plants background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdTlz3dZuDojvIX5DqJNPshBDUPlPoZNFcOTAC7-SwvJWLpWeRrk81CyNHxkI7ilCgsG9EyVDWyyYtM6AjCxMC161odvzg8sBKXD9zjEisgjJlQUvzjULWO0_ROKRY_Wyhs2AKiw02ewHEFxMN_Yix76wz_ctEi_isG078fFrxl1JSuW7NN1CFMDdA7EZMPiFFpPiddgW5vIiNhmus2Zl5PgKTZ8D4zSNQRphkouvtGyYpM-usxJ_n5F_ZXF0X5uybffyl5LaBp6k"/>
+<span class="text-sm font-semibold text-on-surface">Admin</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-72 p-12 max-w-7xl">
+<div class="grid grid-cols-12 gap-8">
+<!-- Hero Header Section -->
+<div class="col-span-12 mb-4">
+<div class="flex flex-col gap-1">
+<span class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-bold text-secondary">Connectivity &amp; Thresholds</span>
+<h3 class="text-4xl font-extrabold text-on-surface tracking-tight">Node Settings</h3>
+</div>
+</div>
+<!-- MQTT Broker Configuration Card -->
+<section class="col-span-12 lg:col-span-7 bg-surface-container-low p-8 rounded-[2rem] flex flex-col gap-8 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-primary-fixed text-on-primary-fixed rounded-2xl">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-on-surface">MQTT Broker Configuration</h4>
+<p class="text-sm text-on-surface-variant">Manage the communication channel for your ESP32 nodes.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-secondary ml-1">Broker Address</label>
+<input class="bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-shadow" type="text" value="broker.hivemq.com"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-secondary ml-1">Port</label>
+<input class="bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-shadow" type="number" value="1883"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-secondary ml-1">Username</label>
+<input class="bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-shadow" placeholder="Optional" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-secondary ml-1">Password</label>
+<input class="bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-shadow" type="password" value="••••••••••••"/>
+</div>
+<div class="col-span-1 md:col-span-2 flex flex-col gap-2">
+<label class="text-[11px] font-bold uppercase tracking-widest text-secondary ml-1">Client ID (ESP32)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 pr-12 focus:ring-2 focus:ring-primary/20 text-on-surface font-mono text-sm transition-shadow" type="text" value="BIOSYNC-NODE-01-ESP32"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline cursor-pointer hover:text-primary">content_copy</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-4">
+<button class="px-6 py-3 rounded-xl font-bold text-secondary hover:bg-surface-container transition-colors">Test Connection</button>
+<button class="px-8 py-3 rounded-xl font-bold bg-primary text-on-primary hover:opacity-90 transition-opacity">Save Configuration</button>
+</div>
+</section>
+<!-- Calibration & Thresholds Sidebar -->
+<section class="col-span-12 lg:col-span-5 flex flex-col gap-8">
+<!-- Irrigation Thresholds -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 shadow-sm relative overflow-hidden">
+<!-- Background aesthetic gradient -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="flex items-center gap-4 mb-8">
+<div class="p-3 bg-tertiary-fixed text-on-tertiary-fixed rounded-2xl">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<h4 class="text-xl font-bold text-on-surface tracking-tight">Auto-Irrigation Thresholds</h4>
+</div>
+<div class="space-y-10">
+<!-- Soil Moisture Threshold -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-semibold text-on-surface">Critical Soil Moisture</span>
+<span class="bg-tertiary/10 text-tertiary text-xs font-bold px-2 py-1 rounded-md">35%</span>
+</div>
+<div class="relative w-full h-2 bg-surface-container rounded-full">
+<div class="absolute left-0 top-0 h-full w-[35%] bg-tertiary rounded-full"></div>
+<div class="absolute left-[35%] top-1/2 -translate-y-1/2 w-4 h-4 bg-on-tertiary border-4 border-tertiary rounded-full shadow-lg cursor-pointer"></div>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Triggers pump when moisture levels drop below this value.</p>
+</div>
+<!-- Saturation Limit -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-semibold text-on-surface">Target Saturation</span>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-md">80%</span>
+</div>
+<div class="relative w-full h-2 bg-surface-container rounded-full">
+<div class="absolute left-0 top-0 h-full w-[80%] bg-primary rounded-full"></div>
+<div class="absolute left-[80%] top-1/2 -translate-y-1/2 w-4 h-4 bg-on-primary border-4 border-primary rounded-full shadow-lg cursor-pointer"></div>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Stops pump once this saturation level is achieved.</p>
+</div>
+</div>
+<div class="mt-10 pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium text-secondary">Manual Override</span>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-3 h-3 bg-primary-fixed rounded-full shadow-sm"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-on-surface">info</span>
+</div>
+</div>
+<!-- Calibration Visual Info -->
+<div class="bg-inverse-surface text-inverse-on-surface p-8 rounded-[2rem] relative overflow-hidden min-h-[220px] flex flex-col justify-end group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a high-tech soil moisture sensor embedded in dark nutrient-rich potting soil with vibrant green sprouts in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIOpN_eA2n7TnXLpVlEEo4ULkZxG1oqjjOOCwcySFVYyn3XOdT9iZMfLhnqAyDTGsiV8JDo-sRKNo9om0fVFYsWHjp9dk0SH0UVAN8oucaA74ZzuY4zHSCkBvXOPPKXRFx62XMrxYAVN8rzuS8s9aC6MZHje2e0w28zNfiWxddxbxyP0urbUFpvYrZwFi8oahdsnJpPffkz5DA7Xk7ESi8h38He3XjsVDYkcgncZjLxKG_mzr454n7A-GDnt7mP3hl0Oan9oS3SxY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/60 to-transparent"></div>
+<div class="relative z-10">
+<h5 class="text-lg font-bold mb-2">Sensor Calibration Tip</h5>
+<p class="text-sm text-surface-variant leading-relaxed opacity-90">Always calibrate sensors in both 'Bone Dry' and 'Fully Saturated' soil states for maximum precision in the ESP32 analog-to-digital conversion.</p>
+</div>
+</div>
+</section>
+<!-- Advanced Parameters Bento Row -->
+<div class="col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container p-6 rounded-3xl flex items-center gap-4 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">network_check</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-secondary">Latency</p>
+<h6 class="font-bold text-on-surface">500ms Update Rate</h6>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-3xl flex items-center gap-4 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">sd_card</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-secondary">Local Logging</p>
+<h6 class="font-bold text-on-surface">SD Card Enabled</h6>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-3xl flex items-center gap-4 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-secondary">Encryption</p>
+<h6 class="font-bold text-on-surface">TLS 1.3 Active</h6>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Only for Save action in Settings context) -->
+<div class="fixed bottom-10 right-10">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined group-hover:rotate-12 transition-transform">save</span>
+</button>
+</div>
+</body></html>

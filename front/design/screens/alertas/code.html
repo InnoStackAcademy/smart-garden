@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BioSync | Alertas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#006948",
+                        "primary-container": "#00855d",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#5c614d",
+                        "error": "#ba1a1a",
+                        "tertiary": "#765538",
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+    <!-- SideNavBar -->
+    <aside class="h-screen w-72 flex flex-col fixed left-0 top-0 bg-[#eceef0] shadow-[0_0_40px_0_rgba(25,28,30,0.06)] z-50">
+        <div class="flex flex-col gap-4 p-6 h-full">
+            <div class="mb-8">
+                <span class="font-headline font-extrabold text-2xl text-primary">BioSync</span>
+                <p class="font-body text-[10px] uppercase tracking-widest font-bold text-secondary mt-1">Digital Greenhouse</p>
+            </div>
+            <nav class="flex flex-col gap-2 flex-grow">
+                <a class="text-secondary hover:text-primary px-4 py-3 hover:bg-background transition-all rounded-xl flex items-center gap-3" href="../dashboard/code.html">
+                    <span class="material-symbols-outlined">potted_plant</span>
+                    <span class="font-headline text-[10px] uppercase tracking-widest font-bold">Garden Stats</span>
+                </a>
+                <a class="text-secondary hover:text-primary px-4 py-3 hover:bg-background transition-all rounded-xl flex items-center gap-3" href="../control-actuadores/code.html">
+                    <span class="material-symbols-outlined">tune</span>
+                    <span class="font-headline text-[10px] uppercase tracking-widest font-bold">Manual Control</span>
+                </a>
+                <a class="text-secondary hover:text-primary px-4 py-3 hover:bg-background transition-all rounded-xl flex items-center gap-3" href="../historico-datos/code.html">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <span class="font-headline text-[10px] uppercase tracking-widest font-bold">Growth Trends</span>
+                </a>
+                <a class="bg-background text-primary font-bold rounded-xl px-4 py-3 flex items-center gap-3" href="#">
+                    <span class="material-symbols-outlined">notifications_active</span>
+                    <span class="font-headline text-[10px] uppercase tracking-widest font-bold">System Alerts</span>
+                </a>
+                <a class="text-secondary hover:text-primary px-4 py-3 hover:bg-background transition-all rounded-xl flex items-center gap-3" href="../configuracion-sistema/code.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="font-headline text-[10px] uppercase tracking-widest font-bold">System Config</span>
+                </a>
+            </nav>
+            <div class="mt-auto pt-6 border-t border-slate-200">
+                <button onclick="location.href='../login/code.html'" class="w-full bg-primary text-white py-3 rounded-xl font-bold font-headline shadow-lg transition-transform active:scale-95">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-72 p-12 max-w-[1200px]">
+        <header class="mb-12 flex justify-between items-end">
+            <div>
+                <span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Security & Status</span>
+                <h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Alerts & Notifications</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <input type="text" class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64" placeholder="Search alerts...">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+                </div>
+                <button class="bg-surface-container-low p-2 rounded-xl text-secondary hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined">filter_list</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="space-y-4">
+            <!-- Alert Item: Critical -->
+            <div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border-l-8 border-error flex items-center justify-between group hover:shadow-md transition-all">
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 bg-error/10 rounded-2xl flex items-center justify-center text-error">
+                        <span class="material-symbols-outlined">warning</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-error">Critical</span>
+                            <span class="text-xs text-secondary">Today, 03:24 AM</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-on-surface">Soil Moisture Low in Zone 1</h4>
+                        <p class="text-sm text-secondary">Sensor reported 28%, which is below the 35% threshold.</p>
+                    </div>
+                </div>
+                <button class="bg-surface-container-low px-4 py-2 rounded-xl text-xs font-bold text-secondary group-hover:bg-primary group-hover:text-white transition-all">
+                    Resolve
+                </button>
+            </div>
+
+            <!-- Alert Item: Warning -->
+            <div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border-l-8 border-tertiary flex items-center justify-between group hover:shadow-md transition-all">
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 bg-tertiary/10 rounded-2xl flex items-center justify-center text-tertiary">
+                        <span class="material-symbols-outlined">wifi_off</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary">Warning</span>
+                            <span class="text-xs text-secondary">Yesterday, 11:45 PM</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-on-surface">MQTT Broker Connection Lost</h4>
+                        <p class="text-sm text-secondary">ESP32 failed to reconnect after 3 attempts. Manual check required.</p>
+                    </div>
+                </div>
+                <button class="bg-surface-container-low px-4 py-2 rounded-xl text-xs font-bold text-secondary hover:bg-tertiary hover:text-white transition-all">
+                    Dismiss
+                </button>
+            </div>
+
+            <!-- Alert Item: Info -->
+            <div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border-l-8 border-primary flex items-center justify-between group hover:shadow-md transition-all">
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">water_drop</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-primary">Information</span>
+                            <span class="text-xs text-secondary">Yesterday, 06:00 PM</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-on-surface">Irrigation Cycle Completed</h4>
+                        <p class="text-sm text-secondary">Zone 2 reached target saturation of 80% successfully.</p>
+                    </div>
+                </div>
+                <button class="bg-surface-container-low px-4 py-2 rounded-xl text-xs font-bold text-secondary hover:bg-primary hover:text-white transition-all">
+                    Details
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
