@@ -1,0 +1,79 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="System Config">
+	<header class="mb-12">
+		<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Preferences</span>
+		<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">System Configuration</h2>
+	</header>
+
+	<div class="grid grid-cols-12 gap-8">
+		<!-- MQTT & Connectivity -->
+		<div class="col-span-12 lg:col-span-6 space-y-8">
+			<section class="bg-surface-container-lowest p-8 rounded-[3rem] shadow-sm border border-white/50">
+				<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+					<span class="material-symbols-outlined text-primary">hub</span>
+					Network & Broker
+				</h3>
+				<div class="space-y-4">
+					<div>
+						<label class="text-[10px] uppercase font-bold text-secondary mb-2 block">MQTT Broker Address</label>
+						<input type="text" value="mqtt://broker.hivemq.com" class="w-full bg-surface-container border-none rounded-2xl py-3 px-4 text-sm font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" />
+					</div>
+					<div>
+						<label class="text-[10px] uppercase font-bold text-secondary mb-2 block">Client ID</label>
+						<input type="text" value="biosync_master_01" class="w-full bg-surface-container border-none rounded-2xl py-3 px-4 text-sm font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" />
+					</div>
+				</div>
+			</section>
+
+			<section class="bg-surface-container-lowest p-8 rounded-[3rem] shadow-sm border border-white/50">
+				<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+					<span class="material-symbols-outlined text-tertiary">notifications</span>
+					Alert Thresholds
+				</h3>
+				<div class="grid grid-cols-2 gap-4">
+					<div>
+						<label class="text-[10px] uppercase font-bold text-secondary mb-2 block">Min Humidity (%)</label>
+						<input type="number" value="30" class="w-full bg-surface-container border-none rounded-2xl py-3 px-4 text-sm font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" />
+					</div>
+					<div>
+						<label class="text-[10px] uppercase font-bold text-secondary mb-2 block">Max Temp (°C)</label>
+						<input type="number" value="32" class="w-full bg-surface-container border-none rounded-2xl py-3 px-4 text-sm font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" />
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- UI & Display -->
+		<div class="col-span-12 lg:col-span-6 space-y-8">
+			<section class="bg-surface-container-lowest p-8 rounded-[3rem] shadow-sm border border-white/50">
+				<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+					<span class="material-symbols-outlined text-secondary">palette</span>
+					Appearance
+				</h3>
+				<div class="space-y-4">
+					<div class="flex items-center justify-between p-4 bg-surface-container rounded-2xl">
+						<span class="text-sm font-bold text-on-surface">Dark Mode</span>
+						<div class="w-12 h-6 bg-primary rounded-full relative">
+							<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+						</div>
+					</div>
+					<div class="flex items-center justify-between p-4 bg-surface-container rounded-2xl">
+						<span class="text-sm font-bold text-on-surface">Metric Units</span>
+						<div class="w-12 h-6 bg-primary rounded-full relative">
+							<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="pt-4">
+				<button class="w-full bg-primary text-white py-4 rounded-[2rem] font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+					Save All Changes
+				</button>
+			</div>
+		</div>
+	</div>
+</MainLayout>

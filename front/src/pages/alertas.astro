@@ -1,0 +1,54 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import NotificationItem from "../components/ui/NotificationItem.tsx";
+---
+
+<MainLayout title="System Alerts">
+	<header class="mb-12 flex justify-between items-end">
+		<div>
+			<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Security & Status</span>
+			<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">System Alerts</h2>
+		</div>
+		<div class="flex items-center gap-4">
+			<button class="bg-surface-container px-6 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest text-secondary hover:text-primary transition-all">Clear All</button>
+		</div>
+	</header>
+
+	<div class="flex flex-col gap-4 max-w-4xl">
+		<NotificationItem 
+			client:load
+			type="critical" 
+			title="Pump Failure Detected" 
+			message="Main irrigation pump in Zone 1 reported no flow while active. Potential hardware blockage or dry running." 
+			time="10 min ago" 
+		/>
+		<NotificationItem 
+			client:load
+			type="warning" 
+			title="High Temperature Warning" 
+			message="Temperature reached 32°C. Ventilation system at 100% capacity." 
+			time="1 hour ago" 
+		/>
+		<NotificationItem 
+			client:load
+			type="info" 
+			title="System Update" 
+			message="BioSync OS updated to v2.4.1. Performance improvements for sensor polling." 
+			time="4 hours ago" 
+		/>
+		<NotificationItem 
+			client:load
+			type="info" 
+			title="Scheduled Watering" 
+			message="Automatic irrigation cycle completed for Zone 3." 
+			time="Yesterday, 08:00 PM" 
+		/>
+		<NotificationItem 
+			client:load
+			type="critical" 
+			title="Battery Critical" 
+			message="Backup ESP32 in Terrace Garden is at 5%. Please replace batteries or connect to DC power." 
+			time="Yesterday, 02:30 PM" 
+		/>
+	</div>
+</MainLayout>

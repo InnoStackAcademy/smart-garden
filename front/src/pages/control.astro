@@ -1,0 +1,64 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ActuatorToggle from "../components/ui/ActuatorToggle.tsx";
+---
+
+<MainLayout title="Manual Control">
+	<header class="mb-12">
+		<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Hardware Management</span>
+		<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Manual Actuators</h2>
+		<p class="text-secondary mt-2 max-w-xl">Override automatic systems to manually trigger irrigation, lighting, or climate control systems.</p>
+	</header>
+
+	<div class="grid grid-cols-12 gap-8">
+		<!-- Irrigation Systems -->
+		<div class="col-span-12 md:col-span-6 lg:col-span-4">
+			<div class="flex items-center gap-2 mb-6 px-4">
+				<span class="material-symbols-outlined text-primary">water_drop</span>
+				<h3 class="font-bold uppercase tracking-widest text-[10px] text-secondary">Irrigation & Fluids</h3>
+			</div>
+			<div class="space-y-4">
+				<ActuatorToggle client:load label="Main Water Pump" icon="water_pump" />
+				<ActuatorToggle client:load label="Nutrient Dispenser" icon="Science" />
+				<ActuatorToggle client:load label="Zone 2 Solenoid" icon="valve" />
+			</div>
+		</div>
+
+		<!-- Climate & Environment -->
+		<div class="col-span-12 md:col-span-6 lg:col-span-4">
+			<div class="flex items-center gap-2 mb-6 px-4">
+				<span class="material-symbols-outlined text-tertiary">cyclone</span>
+				<h3 class="font-bold uppercase tracking-widest text-[10px] text-secondary">Climate Control</h3>
+			</div>
+			<div class="space-y-4">
+				<ActuatorToggle client:load label="Exhaust Fans" icon="air" />
+				<ActuatorToggle client:load label="Intake Ventilation" icon="mode_fan" />
+				<ActuatorToggle client:load label="Humidifier" icon="humidity_mid" />
+			</div>
+		</div>
+
+		<!-- Lighting & Energy -->
+		<div class="col-span-12 md:col-span-6 lg:col-span-4">
+			<div class="flex items-center gap-2 mb-6 px-4">
+				<span class="material-symbols-outlined text-secondary">light_mode</span>
+				<h3 class="font-bold uppercase tracking-widest text-[10px] text-secondary">Lighting Systems</h3>
+			</div>
+			<div class="space-y-4">
+				<ActuatorToggle client:load label="Full Spectrum LEDs" icon="lightbulb" initialState={true} />
+				<ActuatorToggle client:load label="UV Sterilization" icon="uv_index" />
+				<ActuatorToggle client:load label="Night Observation" icon="visibility" />
+			</div>
+		</div>
+	</div>
+
+	<!-- Safety Warning Card -->
+	<div class="mt-12 bg-error/5 border border-error/20 p-8 rounded-[3rem] flex items-center gap-6">
+		<div class="w-16 h-16 bg-error/10 rounded-full flex items-center justify-center text-error">
+			<span class="material-symbols-outlined text-3xl">warning</span>
+		</div>
+		<div>
+			<h4 class="font-bold text-error">Safety Notice</h4>
+			<p class="text-sm text-error/80">Manual override disables automatic fail-safes. Ensure sensor thresholds are monitored during manual operation to prevent hardware damage or crop stress.</p>
+		</div>
+	</div>
+</MainLayout>
