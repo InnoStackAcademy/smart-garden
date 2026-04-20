@@ -38,11 +38,16 @@ Sistema de monitoreo y control inteligente para jardines botánicos, integrando 
 *   **Progreso:**
     *   [20/04] Creación de componentes atómicos: `SensorCard`, `ActuatorToggle`, `NotificationItem`, `StatusBadge`.
     *   [20/04] Ensamblaje de Dashboard dinámico en `index.astro`.
+    *   [20/04] **Integración Socket.IO**: Conexión bidireccional entre Front y Back exitosa. (DONE)
+    *   [20/04] **Infraestructura Global**: Implementación de CI/CD multi-arquitectura con soporte para el módulo `shared`. (DONE)
+    *   [20/04] **Gobernanza**: Actualización de todas las áreas para asegurar rutas relativas y compatibilidad de módulos (ESM). (DONE)
 
 ---
 
 ## 📋 Backlog de Issues Prioritarios
 1.  [ISSUE-001] Inicializar proyecto Astro en carpeta `/front`. (DONE)
 2.  [ISSUE-002] Crear componentes base de UI (Cards, Toggles) según `DESIGN.md`. (DONE)
-3.  [ISSUE-003] Conectar Dashboard con API de backend para datos reales (Socket.IO). (NEXT)
-4.  [ISSUE-004] Implementar layouts dinámicos y navegación SPA con View Transitions. (IN PROGRESS)
+3.  [ISSUE-003] Conectar Dashboard con API de backend para datos reales (Socket.IO). (DONE)
+4.  [ISSUE-004] Implementar layouts dinámicos y navegación SPA con View Transitions. (NEXT)
+5.  [ISSUE-008] Refactorizar CI/CD para soportar imágenes de Frontend y carpeta Shared. (DONE)
+6.  [ISSUE-009] Asegurar consistencia de rutas relativas y portabilidad de red (Nginx fix). (DONE)

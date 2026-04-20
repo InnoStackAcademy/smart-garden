@@ -11,6 +11,18 @@ ESP32 (Edge)  ──MQTT──►  Backend (Node.js)  ──Socket.IO──►  
                             └─────── Shared Logic (Contrato) ──────┘
 ```
 
+## 🏗️ Operativa de Despliegue (CI/CD)
+
+El proyecto utiliza una estrategia de **Build Distribuido** para proteger el hardware limitado (Raspberry Pi):
+
+1.  **Build (GitHub Actions)**: Cada push a `master` dispara un workflow que construye imágenes Docker multi-arquitectura (`linux/amd64` y `linux/arm64`).
+2.  **Registro (GHCR)**: Las imágenes se almacenan en GitHub Container Registry.
+3.  **Despliegue Local (ARM)**: La Raspberry Pi solo realiza un `pull` de la imagen ya compilada para evitar sobrecarga de CPU/RAM.
+4.  **Despliegue Remoto (AMD)**: El VPS remoto (Hostinger/Cloud) descarga la versión x86_64 para producción.
+
+Este flujo garantiza que el entorno de desarrollo sea idéntico al de producción independientemente del hardware.
+
+
 ## Metodología de Seguimiento
 
 El proyecto utiliza un enfoque Scrum pragmático documentado directamente en el repositorio:
@@ -48,29 +60,26 @@ Cada módulo (`backend/`, `front/`, `infra/`) mantiene su propia bitácora y reg
 ## Desarrollo local
 
 ```bash
-# 1. Levantar infra (Mosquitto + MongoDB)
+# 1. Levantar infra base (Mosquitto + MongoDB)
 docker compose -f infra/compose/docker-compose.dev.yml up -d
 
-# 2. Instalar dependencias del backend
-cd backend && npm install
+# 2. Configurar Shared Logic (Contrato)
+# Los cambios en shared/ se reflejan en Back y Front vía imports
 
-# 3. Copiar variables de entorno
-cp .env.example .env
+# 3. Arrancar backend
+cd backend && npm run dev
 
-# 4. Arrancar backend en modo dev
-npm run dev
-
-# 5. (Opcional) Simular ESP32
-npm run simulate
+# 4. Arrancar frontend
+cd front && npm run dev
 ```
 
 ## Deploy a ARM-dev (Raspberry Pi)
 
 ```bash
-# Setup inicial (una sola vez)
-ssh admin@ubuntu-pi 'bash -s' < infra/deploy/setup-pi.sh
+# 1. Push a GitHub (Master) -> Esperar a que termine el build en Actions
+git push origin master
 
-# Deploy (pull imagen pre-buildeada + up)
+# 2. Ejecutar deploy en la Pi
 ssh admin@ubuntu-pi 'bash -s' < infra/deploy/deploy-pi.sh
 ```
 
