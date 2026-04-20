@@ -19,9 +19,10 @@ FROM nginx:alpine
 # Copy built files from Astro
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Custom nginx config (optional, for SPA routing)
+# Custom nginx config (SPA routing + fixed redirects for Docker)
 RUN echo 'server { \
     listen 80; \
+    absolute_redirect off; \
     location / { \
         root /usr/share/nginx/html; \
         index index.html; \
