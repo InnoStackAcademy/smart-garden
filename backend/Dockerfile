@@ -1,5 +1,5 @@
-# Use root context for build
-FROM node:20-alpine AS builder
+# Use node 22 for consistency and compatibility
+FROM node:22-alpine
 
 WORKDIR /app
 
