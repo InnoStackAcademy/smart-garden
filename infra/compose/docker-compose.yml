@@ -1,0 +1,45 @@
+# docker-compose.yml
+# Stack completo: Mosquitto + MongoDB + Backend
+# La Pi solo hace: docker compose pull && docker compose up -d
+# La imagen del backend viene pre-buildeada desde GHCR
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./docker/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  backend:
+    image: ${BACKEND_IMAGE:-ghcr.io/innostackacademy/smart-garden/backend:latest}
+    # Para desarrollo local sin GHCR, descomentar build:
+    # build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/smart-garden
+      - MQTT_BROKER_URL=mqtt://mosquitto:1883
+      - MQTT_CLIENT_ID=smart-garden-backend
+      - PORT=3000
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+      - mosquitto
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+  mosquitto_data:
+  mosquitto_log:
