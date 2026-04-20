@@ -23,6 +23,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 RUN echo 'server { \
     listen 80; \
     absolute_redirect off; \
+    port_in_redirect off; \
     location / { \
         root /usr/share/nginx/html; \
         index index.html; \
