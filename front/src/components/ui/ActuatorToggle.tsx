@@ -75,7 +75,7 @@ const ActuatorToggle: React.FC<ActuatorToggleProps> = ({
         <div className="text-left">
           <h5 className="font-bold text-sm">{label}</h5>
           <p className={`text-[10px] font-black uppercase tracking-widest opacity-70`}>
-            {isPending ? 'Sending...' : isActive ? 'Active' : 'Idle'}
+            {isPending ? 'Enviando...' : isActive ? 'Activo' : 'Inactivo'}
           </p>
         </div>
       </div>

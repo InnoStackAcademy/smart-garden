@@ -3,14 +3,14 @@ import MainLayout from "../layouts/MainLayout.astro";
 import NotificationItem from "../components/ui/NotificationItem.tsx";
 ---
 
-<MainLayout title="System Alerts">
+<MainLayout title="Alertas del Sistema">
 	<header class="mb-12 flex justify-between items-end">
 		<div>
-			<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Security & Status</span>
-			<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">System Alerts</h2>
+			<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Logs de Seguridad</span>
+			<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Alertas del Sistema</h2>
 		</div>
 		<div class="flex items-center gap-4">
-			<button class="bg-surface-container px-6 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest text-secondary hover:text-primary transition-all">Clear All</button>
+			<button class="bg-surface-container px-6 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest text-secondary hover:text-primary transition-all">Limpiar Todo</button>
 		</div>
 	</header>
 
@@ -18,37 +18,37 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 		<NotificationItem 
 			client:load
 			type="critical" 
-			title="Pump Failure Detected" 
-			message="Main irrigation pump in Zone 1 reported no flow while active. Potential hardware blockage or dry running." 
-			time="10 min ago" 
+			title="Fallo de Bomba Detectado" 
+			message="La bomba principal en la Zona 1 reportó falta de flujo mientras estaba activa. Posible bloqueo o funcionamiento en seco." 
+			time="hace 10 min" 
 		/>
 		<NotificationItem 
 			client:load
 			type="warning" 
-			title="High Temperature Warning" 
-			message="Temperature reached 32°C. Ventilation system at 100% capacity." 
-			time="1 hour ago" 
+			title="Advertencia: Alta Temperatura" 
+			message="La temperatura alcanzó los 32°C. El sistema de ventilación está al 100% de capacidad." 
+			time="hace 1 hora" 
 		/>
 		<NotificationItem 
 			client:load
 			type="info" 
-			title="System Update" 
-			message="BioSync OS updated to v2.4.1. Performance improvements for sensor polling." 
-			time="4 hours ago" 
+			title="Actualización del Sistema" 
+			message="BioSync OS actualizado a v2.4.1. Mejoras en la precisión de los sensores." 
+			time="hace 4 horas" 
 		/>
 		<NotificationItem 
 			client:load
 			type="info" 
-			title="Scheduled Watering" 
-			message="Automatic irrigation cycle completed for Zone 3." 
-			time="Yesterday, 08:00 PM" 
+			title="Riego Programado" 
+			message="Ciclo de riego automático completado con éxito para la Zona 3." 
+			time="Ayer, 08:00 PM" 
 		/>
 		<NotificationItem 
 			client:load
 			type="critical" 
-			title="Battery Critical" 
-			message="Backup ESP32 in Terrace Garden is at 5%. Please replace batteries or connect to DC power." 
-			time="Yesterday, 02:30 PM" 
+			title="Batería Crítica" 
+			message="El ESP32 de respaldo en el Jardín Terraza está al 5%. Por favor, cambie las baterías o conecte a fuente DC." 
+			time="Ayer, 02:30 PM" 
 		/>
 	</div>
 </MainLayout>

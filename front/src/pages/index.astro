@@ -9,8 +9,8 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 <MainLayout title="Dashboard">
 	<header class="mb-12 flex justify-between items-end">
 		<div>
-			<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Live Telemetry</span>
-			<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Garden Overview</h2>
+			<span class="text-secondary font-body text-[10px] uppercase tracking-[0.2em] font-bold block mb-2">Telemetría en Vivo</span>
+			<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Vista General del Jardín</h2>
 		</div>
 		<div class="flex items-center gap-4">
 			<StatusBadge status="connected" label="ESP32: Online" />
@@ -27,7 +27,7 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 					client:load
 					deviceId="esp32_garden_01"
 					sensorKey="humidity_soil"
-					label="Soil Moisture" 
+					label="Humedad de Suelo" 
 					unit="%" 
 					icon="water_drop" 
 					trend="up" 
@@ -37,7 +37,7 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 					client:load
 					deviceId="esp32_garden_01"
 					sensorKey="temperature"
-					label="Temperature" 
+					label="Temperatura" 
 					unit="°C" 
 					icon="thermostat" 
 					trend="stable" 
@@ -49,24 +49,24 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 			<div class="bg-surface-container-lowest p-8 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-white/50">
 				<div class="flex justify-between items-center mb-8">
 					<div>
-						<h3 class="text-xl font-bold font-headline tracking-tight">Environmental Dynamics</h3>
-						<p class="text-xs text-secondary mt-1">Humidity & Temperature correlation (Last 24h)</p>
+						<h3 class="text-xl font-bold font-headline tracking-tight">Dinámica Ambiental</h3>
+						<p class="text-xs text-secondary mt-1">Correlación de Humedad y Temperatura (Últimas 24h)</p>
 					</div>
 					<div class="flex gap-2">
-						<button class="bg-primary text-white px-6 py-2 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-primary/20">Real-time</button>
+						<button class="bg-primary text-white px-6 py-2 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-primary/20">Tiempo Real</button>
 					</div>
 				</div>
 				<div class="h-96 bg-surface-container/20 rounded-[2.5rem] flex flex-col items-center justify-center border-2 border-dashed border-secondary/10 group relative">
 					<span class="material-symbols-outlined text-5xl text-secondary/20 mb-4 animate-pulse">monitoring</span>
-					<p class="text-secondary/40 text-sm font-medium italic">Waiting for telemetry stream...</p>
+					<p class="text-secondary/40 text-sm font-medium italic">Esperando flujo de telemetría...</p>
 				</div>
 			</div>
 
 			<!-- Secondary Controls (Quick Access) -->
 			<div class="grid grid-cols-3 gap-6">
-				<ActuatorToggle client:load deviceId="esp32_garden_01" action="water_pump" label="Water Pump" icon="water_pump" initialState={false} />
-				<ActuatorToggle client:load deviceId="esp32_garden_01" action="lights" label="Growth LEDs" icon="lightbulb" initialState={true} />
-				<ActuatorToggle client:load deviceId="esp32_garden_01" action="ventilation" label="Ventilation" icon="air" initialState={false} />
+				<ActuatorToggle client:load deviceId="esp32_garden_01" action="water_pump" label="Bomba de Agua" icon="water_pump" initialState={false} />
+				<ActuatorToggle client:load deviceId="esp32_garden_01" action="lights" label="Luces LED" icon="lightbulb" initialState={true} />
+				<ActuatorToggle client:load deviceId="esp32_garden_01" action="ventilation" label="Ventilación" icon="air" initialState={false} />
 			</div>
 		</div>
 
@@ -78,18 +78,18 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 				<div class="absolute -right-4 -top-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
 				<h4 class="text-lg font-bold mb-4 flex items-center gap-2">
 					<span class="material-symbols-outlined text-primary">analytics</span>
-					System Health
+					Estado del Sistema
 				</h4>
 				<div class="space-y-4">
 					<div class="flex justify-between items-center">
-						<span class="text-xs opacity-60">CPU Load</span>
+						<span class="text-xs opacity-60">Carga CPU</span>
 						<span class="text-xs font-bold">12%</span>
 					</div>
 					<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
 						<div class="bg-primary h-full w-[12%]"></div>
 					</div>
 					<div class="flex justify-between items-center">
-						<span class="text-xs opacity-60">Memory</span>
+						<span class="text-xs opacity-60">Memoria</span>
 						<span class="text-xs font-bold">45MB / 512MB</span>
 					</div>
 					<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
@@ -101,40 +101,40 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 			<!-- Recent Alerts -->
 			<div class="flex flex-col gap-4">
 				<div class="flex justify-between items-center px-4">
-					<h4 class="text-sm font-bold uppercase tracking-widest text-secondary">Recent Alerts</h4>
-					<a href="/alertas" class="text-[10px] font-bold text-primary hover:underline">View all</a>
+					<h4 class="text-sm font-bold uppercase tracking-widest text-secondary">Alertas Recientes</h4>
+					<a href="/alertas" class="text-[10px] font-bold text-primary hover:underline">Ver todas</a>
 				</div>
 				<NotificationItem 
 					client:load
 					type="critical" 
-					title="Critical Moisture" 
-					message="Zone 1 dropped below 30% threshold. Immediate irrigation suggested." 
-					time="2 min ago" 
+					title="Humedad Crítica" 
+					message="La Zona 1 bajó del umbral del 30%. Se sugiere riego inmediato." 
+					time="hace 2 min" 
 				/>
 				<NotificationItem 
 					client:load
 					type="warning" 
-					title="Connectivity" 
-					message="MQTT latency detected above 500ms." 
-					time="45 min ago" 
+					title="Conectividad" 
+					message="Latencia MQTT detectada por encima de 500ms." 
+					time="hace 45 min" 
 				/>
 				<NotificationItem 
 					client:load
 					type="info" 
-					title="Cycle Complete" 
-					message="Scheduled light cycle completed successfully." 
-					time="2 hours ago" 
+					title="Ciclo Completado" 
+					message="El ciclo de luz programado finalizó con éxito." 
+					time="hace 2 horas" 
 				/>
 			</div>
 
 			<!-- Environmental Info -->
 			<div class="bg-surface-container p-8 rounded-[3rem]">
-				<h4 class="text-sm font-bold mb-4">External Weather</h4>
+				<h4 class="text-sm font-bold mb-4">Clima Exterior</h4>
 				<div class="flex items-center gap-6">
 					<span class="material-symbols-outlined text-5xl text-tertiary">cloudy_filled</span>
 					<div>
 						<p class="text-3xl font-black font-headline">18°C</p>
-						<p class="text-xs text-secondary">Cloudy - Humidity 60%</p>
+						<p class="text-xs text-secondary">Nublado - Humedad 60%</p>
 					</div>
 				</div>
 			</div>
