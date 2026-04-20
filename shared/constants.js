@@ -1,7 +1,7 @@
 /**
  * Contrato de comunicación: Eventos y Tópicos
  */
-const SOCKET_EVENTS = {
+export const SOCKET_EVENTS = {
   CONNECT: 'connect',
   DISCONNECT: 'disconnect',
   SENSOR_UPDATE: 'sensor:update',
@@ -10,19 +10,20 @@ const SOCKET_EVENTS = {
   ERROR: 'system:error'
 };
 
-const MQTT_TOPICS = {
+export const MQTT_TOPICS = {
   SENSORS: 'jardin/+/sensores',
   COMMANDS: 'jardin/+/comandos',
   STATUS: 'jardin/+/status'
 };
 
-const DEVICE_ACTIONS = {
+export const DEVICE_ACTIONS = {
   WATER_PUMP: 'water_pump',
   LIGHTS: 'lights',
   VENTILATION: 'ventilation'
 };
 
-module.exports = {
+// Mantenemos un export default para mayor compatibilidad
+export default {
   SOCKET_EVENTS,
   MQTT_TOPICS,
   DEVICE_ACTIONS
