@@ -8,7 +8,7 @@ Plataforma de monitoreo y control inteligente de jardines. Conecta sensores y ac
 ESP32 (Edge)  ──MQTT──►  Backend (Node.js)  ──Socket.IO──►  Frontend (Astro + React)
   sensores                  │ Express API                      Dashboard
   actuadores                │ MongoDB                          Controles
-                            │ MQTT Client                      Históricos
+                            └─────── Shared Logic (Contrato) ──────┘
 ```
 
 ## Metodología de Seguimiento
@@ -27,6 +27,7 @@ Cada módulo (`backend/`, `front/`, `infra/`) mantiene su propia bitácora y reg
 ```
 ├── backend/       → API REST + MQTT client + Socket.IO (Node.js)
 ├── front/         → Dashboard web (Astro 5 + React) + Design System
+├── shared/        → Tipos, constantes y lógica compartida (Contrato)
 ├── infra/         → Docker Compose, deploy scripts, configs
 └── .github/       → CI/CD (GitHub Actions → GHCR multi-arch)
 ```
