@@ -25,8 +25,9 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 			<div class="grid grid-cols-2 gap-6">
 				<SensorCard 
 					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="humidity_soil"
 					label="Soil Moisture" 
-					value={72} 
 					unit="%" 
 					icon="water_drop" 
 					trend="up" 
@@ -34,8 +35,9 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 				/>
 				<SensorCard 
 					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="temperature"
 					label="Temperature" 
-					value={24.5} 
 					unit="°C" 
 					icon="thermostat" 
 					trend="stable" 
@@ -62,9 +64,9 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 
 			<!-- Secondary Controls (Quick Access) -->
 			<div class="grid grid-cols-3 gap-6">
-				<ActuatorToggle client:load label="Water Pump" icon="water_pump" initialState={false} />
-				<ActuatorToggle client:load label="Growth LEDs" icon="lightbulb" initialState={true} />
-				<ActuatorToggle client:load label="Ventilation" icon="air" initialState={false} />
+				<ActuatorToggle client:load deviceId="esp32_garden_01" action="water_pump" label="Water Pump" icon="water_pump" initialState={false} />
+				<ActuatorToggle client:load deviceId="esp32_garden_01" action="lights" label="Growth LEDs" icon="lightbulb" initialState={true} />
+				<ActuatorToggle client:load deviceId="esp32_garden_01" action="ventilation" label="Ventilation" icon="air" initialState={false} />
 			</div>
 		</div>
 
