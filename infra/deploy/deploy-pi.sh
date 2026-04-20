@@ -11,12 +11,14 @@ STACK_DIR="/home/admin/stacks/smart-garden"
 COMPOSE_FILE="$STACK_DIR/docker-compose.pi.yml"
 TAG="${1:-latest}"
 
-# La imagen se configura en .env o se pasa como variable
+# Imágenes desde GHCR
 export BACKEND_IMAGE="${BACKEND_IMAGE:-ghcr.io/innostackacademy/smart-garden/backend:$TAG}"
+export FRONT_IMAGE="${FRONT_IMAGE:-ghcr.io/innostackacademy/smart-garden/front:$TAG}"
 
 echo "🌿 Smart Garden — Deploy en ARM-dev"
-echo "   Imagen: $BACKEND_IMAGE"
-echo "   Stack:  $STACK_DIR"
+echo "   Backend: $BACKEND_IMAGE"
+echo "   Frontend: $FRONT_IMAGE"
+echo "   Stack:    $STACK_DIR"
 echo ""
 
 cd "$STACK_DIR"

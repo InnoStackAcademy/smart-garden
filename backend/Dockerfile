@@ -1,12 +1,17 @@
-FROM node:20-alpine
+# Use root context for build
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
+# Copy shared logic
+COPY shared /shared
+
+# Copy backend files
+COPY backend/package*.json ./
 RUN npm ci --omit=dev
 
-COPY src/ ./src/
-COPY simulator/ ./simulator/
+COPY backend/src ./src
+COPY backend/simulator ./simulator
 
 EXPOSE 3000
 

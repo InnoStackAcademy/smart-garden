@@ -1,35 +1,59 @@
 # docker-compose.pi.yml
-# Este archivo vive en la Pi: /home/admin/stacks/smart-garden/
-# Solo pull + up, nunca build local.
+# Despliegue en Raspberry Pi (ARM64)
+# Ubicación: /home/admin/stacks/smart-garden/
 
 services:
   mosquitto:
     image: eclipse-mosquitto:2
+    container_name: smart-garden-mosquitto
     ports:
       - "1883:1883"
     volumes:
       - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
       - mosquitto_data:/mosquitto/data
       - mosquitto_log:/mosquitto/log
+    networks:
+      - smart-garden-net
     restart: unless-stopped
 
   mongo:
     image: mongo:4.4.18
+    container_name: smart-garden-mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - smart-garden-net
     restart: unless-stopped
 
   backend:
     image: ${BACKEND_IMAGE:-ghcr.io/innostackacademy/smart-garden/backend:latest}
+    container_name: smart-garden-backend
     ports:
       - "3000:3000"
     env_file: .env
     depends_on:
       - mongo
       - mosquitto
+    networks:
+      - smart-garden-net
     restart: unless-stopped
+
+  front:
+    image: ${FRONT_IMAGE:-ghcr.io/innostackacademy/smart-garden/front:latest}
+    container_name: smart-garden-front
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - smart-garden-net
+    restart: unless-stopped
+
+networks:
+  smart-garden-net:
+    driver: bridge
 
 volumes:
   mongo_data:
