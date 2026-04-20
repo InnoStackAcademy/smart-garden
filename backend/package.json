@@ -1,0 +1,21 @@
+{
+  "name": "smart-garden-backend",
+  "version": "1.0.0",
+  "description": "Backend for Smart Garden IoT — Telemetry ingestion, command orchestration, and real-time API",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "simulate": "node simulator/mqtt_simulator.js"
+  },
+  "keywords": ["iot", "mqtt", "garden", "telemetry"],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "mqtt": "^5.10.4",
+    "socket.io": "^4.8.1"
+  }
+}
