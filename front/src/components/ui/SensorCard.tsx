@@ -30,14 +30,21 @@ const SensorCard: React.FC<SensorCardProps> = ({
     const socket = socketService.connect();
 
     const handleUpdate = (payload: SensorUpdatePayload) => {
+      console.log(`[SensorCard] Recibido evento para ${payload.device_id}:`, payload.sensors);
       if (payload.device_id === deviceId) {
         const newValue = payload.sensors[sensorKey];
-        if (newValue !== undefined) setValue(newValue);
+        console.log(`[SensorCard] Actualizando ${sensorKey} a:`, newValue);
+        if (newValue !== undefined && newValue !== null) setValue(newValue);
       }
     };
 
     socket.on(SOCKET_EVENTS.SENSOR_UPDATE, handleUpdate);
-    return () => { socket.off(SOCKET_EVENTS.SENSOR_UPDATE, handleUpdate); };
+    console.log(`[SensorCard] Suscrito a ${SOCKET_EVENTS.SENSOR_UPDATE} para ${deviceId}:${sensorKey}`);
+
+    return () => { 
+      console.log(`[SensorCard] Desconectando listener para ${sensorKey}`);
+      socket.off(SOCKET_EVENTS.SENSOR_UPDATE, handleUpdate); 
+    };
   }, [deviceId, sensorKey]);
 
   const colorClasses = {

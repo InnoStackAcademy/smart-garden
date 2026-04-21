@@ -81,10 +81,11 @@ async function handleSensorData(deviceId, payload) {
   console.log(`[MQTT] Telemetría guardada → ${deviceId}`);
 
   if (io) {
+    const data = reading.toObject();
     io.emit(SOCKET_EVENTS.SENSOR_UPDATE, {
-      device_id: deviceId,
-      timestamp: reading.timestamp,
-      sensors: reading.sensors
+      device_id: data.device_id,
+      timestamp: data.timestamp,
+      sensors: data.sensors
     });
   }
 }
