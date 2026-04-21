@@ -1,9 +1,10 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import SensorCard from "../components/ui/SensorCard.tsx";
-import StatusBadge from "../components/ui/StatusBadge.astro";
+import StatusBadge from "../components/ui/StatusBadge.tsx";
 import ActuatorToggle from "../components/ui/ActuatorToggle.tsx";
 import NotificationItem from "../components/ui/NotificationItem.tsx";
+import SystemStatus from "../components/ui/SystemStatus.tsx";
 ---
 
 <MainLayout title="Dashboard">
@@ -13,7 +14,7 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 			<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Vista General del Jardín</h2>
 		</div>
 		<div class="flex items-center gap-4">
-			<StatusBadge status="connected" label="ESP32: Online" />
+			<StatusBadge client:load deviceId="esp32_garden_01" label="ESP32" />
 		</div>
 	</header>
 
@@ -30,7 +31,7 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 					label="Humedad de Suelo" 
 					unit="%" 
 					icon="water_drop" 
-					trend="up" 
+					trend="stable" 
 					color="primary" 
 				/>
 				<SensorCard 
@@ -73,30 +74,8 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 		<!-- Sidebar Content Area (4 cols) -->
 		<div class="col-span-12 xl:col-span-4 flex flex-col gap-8">
 			
-			<!-- System Status Card -->
-			<div class="bg-on-surface p-8 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
-				<div class="absolute -right-4 -top-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-				<h4 class="text-lg font-bold mb-4 flex items-center gap-2">
-					<span class="material-symbols-outlined text-primary">analytics</span>
-					Estado del Sistema
-				</h4>
-				<div class="space-y-4">
-					<div class="flex justify-between items-center">
-						<span class="text-xs opacity-60">Carga CPU</span>
-						<span class="text-xs font-bold">12%</span>
-					</div>
-					<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-						<div class="bg-primary h-full w-[12%]"></div>
-					</div>
-					<div class="flex justify-between items-center">
-						<span class="text-xs opacity-60">Memoria</span>
-						<span class="text-xs font-bold">45MB / 512MB</span>
-					</div>
-					<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-						<div class="bg-secondary h-full w-[25%]"></div>
-					</div>
-				</div>
-			</div>
+			<!-- System Status Card (Ahora Dinámico) -->
+			<SystemStatus client:load />
 
 			<!-- Recent Alerts -->
 			<div class="flex flex-col gap-4">
@@ -106,24 +85,10 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 				</div>
 				<NotificationItem 
 					client:load
-					type="critical" 
-					title="Humedad Crítica" 
-					message="La Zona 1 bajó del umbral del 30%. Se sugiere riego inmediato." 
-					time="hace 2 min" 
-				/>
-				<NotificationItem 
-					client:load
-					type="warning" 
-					title="Conectividad" 
-					message="Latencia MQTT detectada por encima de 500ms." 
-					time="hace 45 min" 
-				/>
-				<NotificationItem 
-					client:load
 					type="info" 
-					title="Ciclo Completado" 
-					message="El ciclo de luz programado finalizó con éxito." 
-					time="hace 2 horas" 
+					title="Sistema Iniciado" 
+					message="La orquestación del BioSync se ha completado correctamente." 
+					time="Ahora" 
 				/>
 			</div>
 
@@ -133,11 +98,12 @@ import NotificationItem from "../components/ui/NotificationItem.tsx";
 				<div class="flex items-center gap-6">
 					<span class="material-symbols-outlined text-5xl text-tertiary">cloudy_filled</span>
 					<div>
-						<p class="text-3xl font-black font-headline">18°C</p>
-						<p class="text-xs text-secondary">Nublado - Humedad 60%</p>
+						<p class="text-3xl font-black font-headline">--°C</p>
+						<p class="text-xs text-secondary">Actualizando datos meteorológicos...</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </MainLayout>
+

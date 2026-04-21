@@ -16,15 +16,17 @@ Para proteger los recursos de la Raspberry Pi, no realizamos builds localmente:
 
 ## ⚙️ Operativa de Despliegue en ARM (Raspberry Pi)
 
-### Opción A: Desde Terminal Linux/macOS
+Para actualizar el stack en la Raspberry Pi con las últimas imágenes de GitHub:
+
+### 🚀 Método Recomendado (Remoto)
+Ejecute el script de despliegue que reside en el servidor. Esto evita problemas de compatibilidad de finales de línea (CRLF vs LF) al operar desde Windows:
 ```bash
-ssh admin@ubuntu-pi 'bash -s' < infra/deploy/deploy-pi.sh
+ssh admin@ubuntu-pi "bash /home/admin/stacks/smart-garden/deploy-pi.sh"
 ```
 
-### Opción B: Desde PowerShell (Windows)
-```powershell
-Get-Content infra/deploy/deploy-pi.sh | ssh admin@ubuntu-pi 'bash -s'
-```
+### ⚠️ Advertencia sobre Windows/PowerShell
+**No se recomienda** pipear el archivo local hacia el servidor remoto (ej: `Get-Content ... | ssh`), ya que PowerShell envía finales de línea CRLF que causan errores de ejecución en el entorno Linux del servidor ARM.
+
 
 ## ⚠️ Notas Críticas de Compatibilidad
 ### MongoDB en Raspberry Pi 4
