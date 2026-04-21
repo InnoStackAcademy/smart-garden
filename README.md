@@ -11,6 +11,16 @@ ESP32 (Edge)  ──MQTT──►  Backend (Node.js)  ──Socket.IO──►  
                             └─────── Shared Logic (Contrato) ──────┘
 ```
 
+## 🔄 Flujo de Datos End-to-End
+
+El ciclo de vida de la información en BioSync sigue este recorrido:
+
+1.  **Edge (Captura)**: El dispositivo físico (o `test_telemetry.py`) publica telemetría en el tópico `jardin/{device_id}/sensores` vía **MQTT**.
+2.  **Backend (Persistencia)**: El `mqttService` recibe el mensaje, lo valida contra el contrato de `shared` y lo guarda en **MongoDB**.
+3.  **Backend (Streaming)**: El `socketService` re-emite inmediatamente el dato vía **WebSockets** (`sensor:update`) a los clientes conectados.
+4.  **Frontend (Visualización)**: Los componentes React (`SensorCard`) capturan el evento, actualizan su estado y renderizan el valor en tiempo real.
+
+
 ## 🏗️ Operativa de Despliegue (CI/CD)
 
 El proyecto utiliza una estrategia de **Build Distribuido** para proteger el hardware limitado (Raspberry Pi):
