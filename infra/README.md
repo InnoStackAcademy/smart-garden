@@ -1,23 +1,41 @@
-# 🛠️ Infraestructura y Deploy
+# 🛠️ Infraestructura y Despliegue - BioSync
 
-Configuración del entorno y scripts de despliegue para arquitecturas ARM (Raspberry Pi) y AMD (Cloud).
+Este módulo gestiona la orquestación de servicios y la operativa de despliegue para arquitecturas mixtas (**ARM64** para desarrollo en campo y **AMD64** para producción en la nube).
 
-## Estructura
-- `/compose`: Archivos Docker Compose para diferentes entornos.
-- `/deploy`: Scripts de automatización de despliegue.
-- `/docker`: Configuraciones específicas de contenedores (Mosquitto).
+## 🏗️ Estrategia de Despliegue
+Para proteger los recursos de la Raspberry Pi, no realizamos builds localmente:
+1. **Build**: GitHub Actions genera imágenes multi-arch y las sube a GHCR.
+2. **Deploy**: La Pi descarga (`pull`) las imágenes ya compiladas.
 
-## Notas Críticas de Hardware
-### MongoDB en Raspberry Pi (ARMv8-A)
-Las versiones de MongoDB ≥ 5.0 (y parches recientes de 4.4/4.2) requieren la extensión **ARMv8.2-A** (instrucciones `LSE`). La Raspberry Pi 4 no soporta estas instrucciones.
-- **Solución aplicada:** Se utiliza la imagen **`mongo:4.4.18`** para asegurar compatibilidad con RPi 4.
+## 📁 Estructura
+- `/compose`: 
+  - `docker-compose.dev.yml`: Entorno de desarrollo local (AMD64).
+  - `docker-compose.pi.yml`: Orquestación optimizada para Raspberry Pi.
+- `/deploy`: Scripts de automatización.
+- `/docker`: Archivos de configuración (ej. `mosquitto.conf`).
 
-## Comandos de Deploy
-Desde la raíz del proyecto (usando `.env.local` configurado):
+## ⚙️ Operativa de Despliegue en ARM (Raspberry Pi)
+
+### Opción A: Desde Terminal Linux/macOS
 ```bash
-# Setup inicial
-ssh admin@ubuntu-pi 'bash -s' < infra/deploy/setup-pi.sh
-
-# Deploy de nueva versión
 ssh admin@ubuntu-pi 'bash -s' < infra/deploy/deploy-pi.sh
 ```
+
+### Opción B: Desde PowerShell (Windows)
+```powershell
+Get-Content infra/deploy/deploy-pi.sh | ssh admin@ubuntu-pi 'bash -s'
+```
+
+## ⚠️ Notas Críticas de Compatibilidad
+### MongoDB en Raspberry Pi 4
+MongoDB >= 5.0 requiere instrucciones `LSE` (ARMv8.2-A) no presentes en la RPi 4.
+- **Imagen Obligatoria**: `mongo:4.4.18`
+- **Nota**: No intentar actualizar esta imagen sin verificar compatibilidad de CPU.
+
+### Nginx y SPA Navigation
+Para evitar que se pierda el puerto (8080) en las redirecciones internas de la SPA:
+- Se han desactivado `absolute_redirect` y `port_in_redirect` en la configuración de Nginx.
+- Se recomienda el uso de **trailing slashes** en las rutas del frontend.
+
+---
+© 2026 InnoStack Academy - BioSync Smart Garden

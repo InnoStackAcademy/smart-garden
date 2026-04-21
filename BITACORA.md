@@ -41,6 +41,7 @@ Sistema de monitoreo y control inteligente para jardines botánicos, integrando 
     *   [20/04] **Integración Socket.IO**: Conexión bidireccional entre Front y Back exitosa. (DONE)
     *   [20/04] **Infraestructura Global**: Implementación de CI/CD multi-arquitectura con soporte para el módulo `shared`. (DONE)
     *   [20/04] **Gobernanza**: Actualización de todas las áreas para asegurar rutas relativas y compatibilidad de módulos (ESM). (DONE)
+    *   [20/04] **Localización**: Traducción completa al español del frontend y despliegue exitoso en ARM-dev (Raspberry Pi). (DONE)
 
 ---
 
@@ -51,3 +52,27 @@ Sistema de monitoreo y control inteligente para jardines botánicos, integrando 
 4.  [ISSUE-004] Implementar layouts dinámicos y navegación SPA con View Transitions. (NEXT)
 5.  [ISSUE-008] Refactorizar CI/CD para soportar imágenes de Frontend y carpeta Shared. (DONE)
 6.  [ISSUE-009] Asegurar consistencia de rutas relativas y portabilidad de red (Nginx fix). (DONE)
+
+---
+
+## 🔌 Contrato de Conexión IoT (MQTT) - Relevo de Agente
+Para la integración final entre el Hardware (ESP32) y la Infraestructura Cloud:
+
+### Parámetros de Red
+- **Broker (Local/Pi)**: `mqtt://ubuntu-pi:1883`
+- **Broker (Cloud)**: Definido por el Agente de Infra en el `.env` del backend.
+- **Client ID**: `esp32_garden_01`
+
+### Mapa de Tópicos
+- **Telemetría (Dispositivo -> Cloud)**: 
+  - Tópico: `jardin/esp32_garden_01/sensores`
+  - Payload: `JSON` (Ver `main.cpp` para estructura de campos).
+- **Control (Cloud -> Dispositivo)**: 
+  - Tópico: `jardin/esp32_garden_01/comandos`
+  - Payload: `{ "action": "pump", "value": 1/0 }`
+- **Feedback (Dispositivo -> Cloud)**: 
+  - Tópico: `jardin/esp32_garden_01/status`
+  - Payload: Confirmación de ejecución de comando.
+
+### Validación
+- El firmware del ESP32 está configurado para usar **Wokwi Gateway** (WiFi: `Wokwi-GUEST`) para las pruebas locales antes del deploy definitivo.
