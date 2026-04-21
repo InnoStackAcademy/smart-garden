@@ -21,12 +21,12 @@ import SensorCard from "../components/ui/SensorCard.tsx";
 		</div>
 	</header>
 
-	<!-- Historical Summary -->
-	<div class="grid grid-cols-4 gap-6 mb-12">
-		<SensorCard client:load label="Max Temp" value={28.2} unit="°C" icon="device_thermostat" color="tertiary" />
-		<SensorCard client:load label="Min Temp" value={19.5} unit="°C" icon="ac_unit" color="secondary" />
-		<SensorCard client:load label="Avg Humidity" value={65} unit="%" icon="water_drop" color="primary" />
-		<SensorCard client:load label="Total UV" value={420} unit="nm" icon="sunny" color="error" />
+	<!-- Historical Summary (Valores Agregados / Indirectos) -->
+	<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+		<SensorCard client:load deviceId="esp32_garden_01" sensorKey="temperature" label="Temp. Máxima" unit="°C" icon="device_thermostat" color="tertiary" />
+		<SensorCard client:load deviceId="esp32_garden_01" sensorKey="flow_total" label="Consumo Mensual" unit="L" icon="water_drop" color="primary" />
+		<SensorCard client:load deviceId="esp32_garden_01" sensorKey="humidity_soil" label="Humedad Media" unit="%" icon="water_drop" color="secondary" />
+		<SensorCard client:load deviceId="esp32_garden_01" sensorKey="light" label="Eficiencia Luz" unit="Lux" icon="sunny" color="error" />
 	</div>
 
 	<!-- Main Charts -->

@@ -22,16 +22,15 @@ import SystemStatus from "../components/ui/SystemStatus.tsx";
 		<!-- Main Content Area (8 cols) -->
 		<div class="col-span-12 xl:col-span-8 flex flex-col gap-8">
 			
-			<!-- Primary Stats Bento -->
-			<div class="grid grid-cols-2 gap-6">
+			<!-- Primary Environmental Bento -->
+			<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 				<SensorCard 
 					client:load
 					deviceId="esp32_garden_01"
 					sensorKey="humidity_soil"
-					label="Humedad de Suelo" 
+					label="Humedad Suelo" 
 					unit="%" 
 					icon="water_drop" 
-					trend="stable" 
 					color="primary" 
 				/>
 				<SensorCard 
@@ -41,8 +40,56 @@ import SystemStatus from "../components/ui/SystemStatus.tsx";
 					label="Temperatura" 
 					unit="°C" 
 					icon="thermostat" 
-					trend="stable" 
 					color="secondary" 
+				/>
+				<SensorCard 
+					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="humidity_air"
+					label="Humedad Aire" 
+					unit="%" 
+					icon="humidity_low" 
+					color="tertiary" 
+				/>
+				<SensorCard 
+					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="light"
+					label="Luz (Lux)" 
+					unit="" 
+					icon="sunny" 
+					color="primary" 
+				/>
+			</div>
+
+			<!-- Nutrient & Fluid Health -->
+			<div class="grid grid-cols-3 gap-4">
+				<SensorCard 
+					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="conductivity"
+					label="Conductividad" 
+					unit="mS/cm" 
+					icon="electric_bolt" 
+					color="secondary" 
+				/>
+				<SensorCard 
+					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="flow_rate"
+					label="Caudal Riego" 
+					unit="L/m" 
+					icon="water_lux" 
+					color="tertiary" 
+				/>
+				<SensorCard 
+					client:load
+					deviceId="esp32_garden_01"
+					sensorKey="flow_total"
+					label="Consumo Total" 
+					unit="L" 
+					icon="database" 
+					color="primary" 
 				/>
 			</div>
 
