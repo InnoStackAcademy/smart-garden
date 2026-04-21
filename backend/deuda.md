@@ -11,3 +11,9 @@ Registro de compromisos técnicos del motor de telemetría y API.
 2.  **Rate Limiting**: El servidor Socket.IO no tiene límites de emisión. Deuda: Implementar throttling para evitar saturación del cliente en ráfagas de datos.
 3.  **Logs**: Se usa `console.log`. Deuda: Integrar una librería de logging profesional (Winston o Pino) para trazabilidad en producción.
 4.  **Error Handling**: Errores en el cliente MQTT pueden tirar el proceso. Deuda: Implementar reconexión resiliente y manejo de excepciones global.
+
+---
+
+## 🟡 Deuda de Sprint 3: "Integration"
+1.  **Normalización de Datos**: El backend persiste y emite valores crudos sin transformación. Deuda: Implementar escalado (ej. mapear 0-1024 a 0-100%) según el sensor.
+2.  **Simulador Parcial**: El script `test_telemetry.py` no cumple con el contrato completo de `shared`. Deuda: Extender a los 7 sensores.

@@ -18,3 +18,5 @@ Registro de compromisos técnicos adquiridos durante el desarrollo del Frontend.
 1.  **Atomic Consistency**: Asegurar que todos los componentes extraídos sigan los tokens de `@theme` de Tailwind 4 rigurosamente.
 2.  **Hydration Strategy**: Evaluar el impacto de `client:load` en el rendimiento y considerar `client:visible` para widgets pesados.
 3.  **Librería de Componentes**: Falta centralizar todos los átomos en un Storybook o guía de estilo viva.
+21: - **[LÓGICA] Métricas Simuladas**: Los componentes `SystemStatus` y `StatusBadge` usan timers locales para simular actividad. Deuda: Conectar a WebSockets para métricas reales del host.
+22: - **[DATOS] Escala de Sensores**: Las `SensorCard` no aplican factores de conversión a los datos crudos recibidos.

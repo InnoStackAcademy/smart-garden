@@ -17,9 +17,10 @@ Sistema de monitoreo y control inteligente para jardines botánicos, integrando 
 *   **H5: Implementación de Screens**: Dashboard, Controles e Históricos basados en Stitch. (DONE)
 *   **H6: Integración en Tiempo Real**: Conexión de Socket.IO en el frontend. (TODO)
 
-### [ÉPICA 3] Ecosistema Autónomo — ESTADO: ⚪ PENDIENTE
+### [ÉPICA 3] Ecosistema Autónomo — ESTADO: 🟡 EN PROGRESO
 *   **H7: Lógica de Autogestión**: Reglas de riego automático basadas en humedad. (TODO)
 *   **H8: Integración Clima**: Consumo de APIs de clima externo. (TODO)
+*   **H9: Paridad de Telemetría**: Extender el flujo de datos para cubrir los 7 sensores del contrato Shared (Luz, Conductividad, Caudal). (TODO)
 
 ---
 
