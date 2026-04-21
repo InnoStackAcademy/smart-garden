@@ -1,8 +1,10 @@
 import { io, Socket } from "socket.io-client";
 import { SOCKET_EVENTS } from "../../../shared/constants";
 
-// URL del backend (ajustable por env)
-const SOCKET_URL = import.meta.env.PUBLIC_API_URL || "http://localhost:3000";
+// URL del backend (dinámica según el host actual o ajustable por env)
+const isBrowser = typeof window !== 'undefined';
+const defaultHost = isBrowser ? `${window.location.protocol}//${window.location.hostname}:3000` : "http://localhost:3000";
+const SOCKET_URL = import.meta.env.PUBLIC_API_URL || defaultHost;
 
 class SocketService {
   private static instance: SocketService;
